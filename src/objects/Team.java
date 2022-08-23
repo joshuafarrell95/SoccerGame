@@ -1,7 +1,5 @@
 package objects;
 
-import exceptions.*;
-
 public class Team {
     /* Static Team array */
     private static final int NUMBER_OF_TEAM = 4;
@@ -15,12 +13,8 @@ public class Team {
     
     /* Custom constructor */
     public Team(String teamName) {
-        //if (teamCount > 3) {
-        //    throw new TeamLimitReachedException();
-        //} else {
-            this.teamName = teamName;
-            this.teamID = teamCount++;
-        //}
+        this.teamName = teamName;
+        this.teamID = teamCount++;
     }
     
     /* Setters and getters */

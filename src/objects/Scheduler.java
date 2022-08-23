@@ -1,8 +1,5 @@
 package objects;
 
-import exceptions.TeamLimitReachedException;
-import exceptions.TemperatureTooLowException;
-import java.util.HashSet;
 import java.util.InputMismatchException;            /* module java.base, imports Scanner, Random and InputMismatchException */
 import java.util.Scanner;
 import java.util.Random;
@@ -18,47 +15,42 @@ public class Scheduler {
     public Scheduler() {
     }
     
-    public String acceptUserInput() throws TemperatureTooLowException {
+    public boolean acceptUserInput() {
         try {
+            System.out.print("What is today's Temperature (in Fahrenheit)? ");
+            
             int userInput = scan.nextInt();
             
             if (userInput > 32) {
                 scheduleGame(2, userInput);
             } else {
-                throw new TemperatureTooLowException();
+                return false;
             }
-            
-            
+        } catch (InputMismatchException ex) {
+            return false;
         }
-        catch (TemperatureTooLowException ex) {
-            
-        }
-        catch (InputMismatchException ex) {
-            
-        }
-        return "Test";
+        return true;
     }
     
-    public String scheduleGame(int gameAmount, int temperature) {
+    public boolean scheduleGame(int gameAmount, int temperature) {
         int[] schedulerArray = new int[2];
-        int firstValue;
-        int secondValue;
+        int schedulerCounter = 0;
         boolean isScheduled = false;
         
-        outer: while (!isScheduled) {
+        inner: while (schedulerCounter < gameAmount) {
             for (int i = 0; i < gameAmount; i++) {
                 schedulerArray[i] = random.nextInt(4);
-                System.out.println(schedulerArray[i]);
             }
-            System.out.println("=-=-=-=");
-            if (schedulerArray[1] != schedulerArray[0]) {
-                    
-                Team.setTeamWinTotal(schedulerArray[0], Team.getTeamWinTotal(1) + 2);
-                isScheduled = true;
-                break outer;
+            if (schedulerArray[1] != schedulerArray[0]) {           /* Check if the teams are not the same*/
+                Game game = new Game(schedulerArray[0], schedulerArray[1], temperature);
+                System.out.println(game.getGameID());
+                game.determineScore(schedulerArray[0], schedulerArray[1], temperature);
+                schedulerCounter++;
             }
-        }       
-        return gameAmount + "Games scheduled. (" + (gameAmount / 2) + " game for " + gameAmount + " teams.)";
+        }
+        
+        System.out.println(gameAmount + " Games scheduled. (" + (gameAmount / 2) + " game for " + gameAmount + " teams)");
+        return true;
     }
     
     public void seasonOver() {

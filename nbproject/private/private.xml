@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Joshua%20Farrell/Documents/NetBeansProjects/SoccerGame/src/objects/Team.java</file>
-            <file>file:/C:/Users/Joshua%20Farrell/Documents/NetBeansProjects/SoccerGame/src/objects/Scheduler.java</file>
-            <file>file:/C:/Users/Joshua%20Farrell/Documents/NetBeansProjects/SoccerGame/src/exceptions/TemperatureTooLowException.java</file>
-            <file>file:/C:/Users/Joshua%20Farrell/Documents/NetBeansProjects/SoccerGame/src/soccergame/SoccerGame.java</file>
-            <file>file:/C:/Users/Joshua%20Farrell/Documents/NetBeansProjects/SoccerGame/src/objects/Game.java</file>
-            <file>file:/C:/Users/Joshua%20Farrell/Documents/NetBeansProjects/SoccerGame/src/exceptions/TeamLimitReachedException.java</file>
-            <file>file:/C:/Users/Joshua%20Farrell/Documents/NetBeansProjects/SoccerGame/.git/config</file>
+            <file>file:/E:/Projects/Java/SoccerGame/src/exceptions/TeamLimitReachedException.java</file>
+            <file>file:/E:/Projects/Java/SoccerGame/src/objects/Scheduler.java</file>
+            <file>file:/E:/Projects/Java/SoccerGame/src/objects/Game.java</file>
+            <file>file:/E:/Projects/Java/SoccerGame/src/exceptions/TemperatureTooLowException.java</file>
+            <file>file:/E:/Projects/Java/SoccerGame/src/soccergame/SoccerGame.java</file>
+            <file>file:/E:/Projects/Java/SoccerGame/src/objects/Team.java</file>
         </group>
     </open-files>
 </project-private>

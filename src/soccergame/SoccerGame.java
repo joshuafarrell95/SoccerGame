@@ -1,7 +1,6 @@
 package soccergame;
 
 import objects.*;
-import exceptions.*;
 
 /**
  * AT1 Activity 2 OOP 2 - Soccer Game
@@ -16,9 +15,16 @@ public class SoccerGame {
      */
 
     public static void main(String[] args) {
+        int attempt = 0;
         Scheduler scheduler = new Scheduler();
         
-        scheduler.scheduleGame(2, 40);
+        while (attempt < 3) {
+            if (!scheduler.acceptUserInput()) {
+                attempt++;
+            } else {
+                attempt = 0;
+            }
+        }
         
         scheduler.seasonOver();
             
