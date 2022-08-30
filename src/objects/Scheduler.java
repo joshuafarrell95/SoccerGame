@@ -11,10 +11,12 @@ public class Scheduler {
     Team team2 = new Team("Thornlie");
     Team team3 = new Team("Murdoch");
     Team team4 = new Team("Rockingham");
+    
     private int attempt = 0;
     private final int MAX_ATTEMPT = 3;
             
     public Scheduler() {
+        
     }
     
     public void acceptUserInput() {
@@ -22,7 +24,7 @@ public class Scheduler {
             int temperature;
             try {
                 System.out.print("What is today's Temperature (in Fahrenheit)? ");
-                while(!scan.hasNextInt()) {                     /* Catch any InputMismatchException */
+                while(!scan.hasNextInt()) {                     /* Catch any non integer values */
                     scan.next();
                     throw new InputMismatchException();
                 }
@@ -32,8 +34,8 @@ public class Scheduler {
                     attempt = 0;
                     scheduleGame(2, temperature);
                 } else if (temperature <= 32) {                 /* Temp is below freezing point */
-                    System.out.println("Too cold to play");
                     attempt++;
+                    outputTooColdMessage(attempt);
                 }
             } catch (InputMismatchException ex) {
                 System.out.println("Input mismatch - Please enter an integer");
@@ -41,28 +43,38 @@ public class Scheduler {
         }
     }
     
+    public void outputTooColdMessage(int attempt) {
+        System.out.print ("Too cold to play - ");
+        if (attempt == 1) {
+            System.out.println("2 more attempts before the season ends. \r\n"
+                    + "To play a game, the temperature must be at least 33 degrees Fahrenheit.");
+        } else if (attempt == 2) {
+            System.out.println("1 more attempt before the season ends!");
+        } else {
+            System.out.println("The soccer season has ended.");
+        }
+    }
+    
     public boolean scheduleGame(int gameAmount, int temperature) {
         int[] schedulerArray = new int[2];
         int schedulerCounter = 0;
-        String[] teamNames = new String[2];
+        Game game;
         
-        boolean isScheduled = false;
-
         while (schedulerCounter < gameAmount) {
             for (int i = 0; i < gameAmount; i++) {
                 schedulerArray[i] = random.nextInt(4);
             }            
 
             if (schedulerArray[1] != schedulerArray[0]) {           /* Check if the teams are not the same*/
-                Game game = new Game(convertTeamIDToTeamObj(schedulerArray[0]), 
+                game = new Game(convertTeamIDToTeamObj(schedulerArray[0]), 
                         convertTeamIDToTeamObj(schedulerArray[1]), temperature);
-
-                game.determineScore(schedulerArray[0], schedulerArray[1], temperature);
                 schedulerCounter++;
+                System.out.println(game.getHomeTeamName() + " vs. " + game.getAwayTeamName());
             }
         }
         
-	System.out.println(gameAmount + " Games scheduled. (" + (gameAmount / 2) + " game for " + gameAmount + " teams)");        
+	System.out.println(gameAmount + " Games scheduled. (" + (gameAmount / 2) + " game for " + gameAmount + " teams)");
+        
         return true;
     }
     
@@ -86,6 +98,7 @@ public class Scheduler {
         team2.printResult();
         team3.printResult();
         team4.printResult();
-        Game game = new Game(team1);
+
+        Game.printGameStats();
     }
 }

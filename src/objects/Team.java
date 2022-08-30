@@ -27,7 +27,7 @@ public class Team {
     }
     
     public static void setTeamWinTotal(int teamID, int teamWinTotal) {
-        teams[teamID][0] = teamWinTotal;
+        teams[teamID][0] += teamWinTotal++;
     }
     
     public static int getTeamWinTotal(int teamID) {
@@ -35,7 +35,7 @@ public class Team {
     }
     
     public static void setTeamLossTotal(int teamID, int teamLossTotal) {
-        teams[teamID][1] = teamLossTotal;
+        teams[teamID][1] += teamLossTotal;
     }
     
     public static int getTeamLossTotal(int teamID) {
@@ -43,7 +43,7 @@ public class Team {
     }
     
     public static void setTeamTieTotal(int teamID, int teamTieTotal) {
-        teams[teamID][2] = teamTieTotal;
+        teams[teamID][2] += teamTieTotal;
     }
     
     public static int getTeamTieTotal(int teamID) {
@@ -51,7 +51,7 @@ public class Team {
     }
     
     public static void setTeamTotalScore(int teamID, int teamTotalScore) {
-        teams[teamID][3] = teamTotalScore;
+        teams[teamID][3] += teamTotalScore++;
     }
     
     public static int getTeamTotalScore(int teamID) {
@@ -59,7 +59,7 @@ public class Team {
     }
     
     public static void setTeamTotalAllow(int teamID, int teamTotalAllow) {
-        teams[teamID][4] = teamTotalAllow;
+        teams[teamID][4] += teamTotalAllow;
     }
     
     public static int getTeamTotalAllow(int teamID) {
