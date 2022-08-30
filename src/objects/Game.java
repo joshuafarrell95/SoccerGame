@@ -9,11 +9,20 @@ public class Game {
     private static int gameCount = 1;
     private int gameID;                 /* get only */
     private static ArrayList<String> gamesArray = new ArrayList<>();
+    
+    //private static ArrayList<ArrayList<String>> gamesArray = new ArrayList<>();
     private int gameTeamScore;
     
-    public Game(int team1, int team2, int temperature) {
+    public Game(Team team) {
+        printGameStats(team);
+    }
+    
+    public Game(Team team1, Team team2, int temperature) {
         this.gameID = gameCount;
-        gamesArray.add("test");
+        String teamName1 = team1.getTeamName();
+        
+        
+        gamesArray.add(team1 + "," + team2 + "," + temperature);
         gameCount++;
     }
     
@@ -70,10 +79,9 @@ public class Game {
     }
     
     public void printGameStats(Team team) {        
-        for (int x = 0; x < gameCount; x++) {
-            gamesArray.toString();
-        }
-        
-        gamesArray.toString();
+//        for (int x = 0; x < gameCount; x++) {
+//            
+//        }
+        System.out.println(gamesArray.toString());
     }
 }

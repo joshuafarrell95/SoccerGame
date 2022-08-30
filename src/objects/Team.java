@@ -79,7 +79,7 @@ public class Team {
         if (this.getTeamID() == 0) {
             System.out.println("*********RESULTS*********");
         }
-        System.out.println("Team " + this.getTeamID());
+        System.out.println("Team " + this.getTeamID() + " - " + this.getTeamName());
         System.out.println("Wins: " + this.getTeamWinTotal(this.getTeamID())
                 + ", Losses: " + this.getTeamLossTotal(this.getTeamID()) 
                 + ", Ties: " + this.getTeamTieTotal(this.getTeamID()));
