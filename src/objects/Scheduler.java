@@ -1,12 +1,11 @@
 package objects;
 
-import java.util.InputMismatchException;            /* module java.base, imports Scanner, Random and InputMismatchException */
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;            /* module java.base, imports Scanner, Random and InputMismatchException */
 
 public class Scheduler {
     Scanner scan = new Scanner(System.in);
     Random random = new Random();
+    
     Team team1 = new Team("Perth");
     Team team2 = new Team("Thornlie");
     Team team3 = new Team("Murdoch");
@@ -14,10 +13,6 @@ public class Scheduler {
     
     private int attempt = 0;
     private final int MAX_ATTEMPT = 3;
-            
-    public Scheduler() {
-        
-    }
     
     public void acceptUserInput() {
         while (attempt < MAX_ATTEMPT) {
@@ -55,7 +50,7 @@ public class Scheduler {
         }
     }
     
-    public boolean scheduleGame(int gameAmount, int temperature) {
+    public void scheduleGame(int gameAmount, int temperature) {
         int[] schedulerArray = new int[2];
         int schedulerCounter = 0;
         Game game;
@@ -74,8 +69,6 @@ public class Scheduler {
         }
         
 	System.out.println(gameAmount + " Games scheduled. (" + (gameAmount / 2) + " game for " + gameAmount + " teams)");
-        
-        return true;
     }
     
     private Team convertTeamIDToTeamObj(int teamID) {

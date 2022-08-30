@@ -1,23 +1,24 @@
 package objects;
 
-import java.util.ArrayList;         /* module java.base */
-import java.util.Random;
+import java.util.*;         /* module java.base, imports ArrayList and Random */
 
 public class Game {
     Random random = new Random();
     
-    private Team homeTeam;
-    private Team awayTeam;
-    private int homeTeamScore;
-    private int awayTeamScore;
-    private int temperature;
-    
+    /* Game attributes */
+    private Team homeTeam;              /* constructor only */
+    private Team awayTeam;              /* constructor only */
+    private int homeTeamScore;          /* set only */
+    private int awayTeamScore;          /* set only */
+    private int temperature;            /* constructor only */
     private static int gameCount = 0;
     private int gameID;                 /* get only */
+    
     private static ArrayList<Game> gamesArray = new ArrayList<>();
     
     public Game() {
-        
+        System.out.println("You must use the custom constructor.\r\n"
+                + "Please pass through two team objects and an integer temperature.");
     }
     
     public Game(Team team1, Team team2, int temperature) {
@@ -27,7 +28,6 @@ public class Game {
         gameCount++;
         this.gameID = gameCount;
         determineScore(homeTeam, awayTeam, this.temperature);
-        
         gamesArray.add(this);
     }
     
@@ -68,17 +68,14 @@ public class Game {
         
         if (scoreArray[0] > scoreArray[1]) {            /* team1 wins */
             Team.setTeamWinTotal(convertTeamToID(team1), 1);
-            
             Team.setTeamLossTotal(convertTeamToID(team2), 1);
 
         } else if (scoreArray[0] < scoreArray[1]) {     /* team2 wins */
             Team.setTeamWinTotal(convertTeamToID(team2), 1);
-            
             Team.setTeamLossTotal(convertTeamToID(team1), 1);
 
         } else {                                        /* both teams tie */
             Team.setTeamTieTotal(convertTeamToID(team1), 1);
-            
             Team.setTeamTieTotal(convertTeamToID(team2), 1);
         }
         
@@ -117,8 +114,9 @@ public class Game {
     
     @Override
     public String toString() {
-        return "Game #" + gameID + "\nTemperature: " + temperature + "\nAway Team: "
-                + awayTeam.getTeamName() + " " + awayTeamScore + "\nHome Team: " + homeTeam.getTeamName()
-                + " " + homeTeamScore;
+        return "Game #" + gameID + "\r\n"
+                + "Temperature: " + temperature + "\r\n"
+                + "Home Team: " + homeTeam.getTeamName() + " " + homeTeamScore + "\r\n"
+                + "Away Team: " + awayTeam.getTeamName() + " " + awayTeamScore;
     }
 }
