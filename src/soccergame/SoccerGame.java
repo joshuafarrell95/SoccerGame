@@ -15,16 +15,10 @@ public class SoccerGame {
      */
 
     public static void main(String[] args) {
-        int attempt = 0;
+
         Scheduler scheduler = new Scheduler();
-        
-        while (attempt < 3) {
-            if (!scheduler.acceptUserInput()) {
-                attempt++;
-            } else {
-                attempt = 0;
-            }
-        }
+
+        scheduler.acceptUserInput();
         
         scheduler.seasonOver();
             
